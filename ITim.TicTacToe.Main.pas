@@ -28,6 +28,8 @@ type
     SpeedButton33: TSpeedButton;
     procedure MakeMove(ButtonNumber: Integer);
     procedure CheckResults;
+    procedure FinishRound(ButtonNumber: Integer);
+    procedure ClearField;
     procedure SpeedButton11Click(Sender: TObject);
     procedure SpeedButton12Click(Sender: TObject);
     procedure SpeedButton13Click(Sender: TObject);
@@ -48,6 +50,7 @@ var
   MainForm: TMainForm;
   UserMove: Boolean;
   MoveSymbol: Char;
+  MoveNumber: Integer;
 
 implementation
 
@@ -118,8 +121,105 @@ end;
 
 procedure TMainForm.CheckResults;
 begin
-  // Реализовать проверку результатов игры
-  exit;
+  Inc(MoveNumber);
+
+  {$Region 'if-else: Проверки для горизонтальных линий'}
+  // Горизонталь 1
+  if SpeedButton11.Enabled = False and SpeedButton12.Enabled = False and SpeedButton13.Enabled = False then
+    if (SpeedButton11.Caption = SpeedButton12.Caption) and (SpeedButton12.Caption = SpeedButton13.Caption) then
+      FinishRound(11);
+
+  // Горизонталь 2
+  if SpeedButton21.Enabled = False and SpeedButton22.Enabled = False and SpeedButton23.Enabled = False then
+    if (SpeedButton21.Caption = SpeedButton22.Caption) and (SpeedButton22.Caption = SpeedButton23.Caption) then
+      FinishRound(22);
+
+  // Горизонталь 3
+  if SpeedButton31.Enabled = False and SpeedButton32.Enabled = False and SpeedButton33.Enabled = False then
+    if (SpeedButton31.Caption = SpeedButton32.Caption) and (SpeedButton32.Caption = SpeedButton33.Caption) then
+      FinishRound(33);
+  {$EndRegion}
+
+  {$Region 'if-else: Проверки для вертикальных линий'}
+  // Вертикаль 1
+  if SpeedButton11.Enabled = False and SpeedButton21.Enabled = False and SpeedButton31.Enabled = False then
+    if (SpeedButton11.Caption = SpeedButton21.Caption) and (SpeedButton21.Caption = SpeedButton31.Caption) then
+      FinishRound(11);
+
+  // Вертикаль 2
+  if SpeedButton12.Enabled = False and SpeedButton22.Enabled = False and SpeedButton32.Enabled = False then
+    if (SpeedButton12.Caption = SpeedButton22.Caption) and (SpeedButton22.Caption = SpeedButton32.Caption) then
+      FinishRound(22);
+
+  // Вертикаль 3
+  if SpeedButton13.Enabled = False and SpeedButton23.Enabled = False and SpeedButton33.Enabled = False then
+    if (SpeedButton13.Caption = SpeedButton23.Caption) and (SpeedButton23.Caption = SpeedButton33.Caption) then
+      FinishRound(33);
+  {$EndRegion}
+
+  {$Region 'if-else: Проверки для диагональных линий'}
+  // Диагональ 1
+  if SpeedButton11.Enabled = False and SpeedButton22.Enabled = False and SpeedButton33.Enabled = False then
+    if (SpeedButton11.Caption = SpeedButton22.Caption) and (SpeedButton22.Caption = SpeedButton33.Caption) then
+      FinishRound(22);
+
+  // Диагональ 2
+  if SpeedButton13.Enabled = False and SpeedButton22.Enabled = False and SpeedButton31.Enabled = False then
+    if (SpeedButton13.Caption = SpeedButton22.Caption) and (SpeedButton22.Caption = SpeedButton31.Caption) then
+      FinishRound(22);
+  {$EndRegion}
+
+  {$Region 'if-else: Проверка на ничью'}
+  if MoveNumber = 9 then
+    FinishRound(0);
+  {$EndRegion}
+
+end;
+
+procedure TMainForm.FinishRound(ButtonNumber: Integer);
+begin
+  var
+    WinnerSymbol, WinnerMessage: String;
+
+  case ButtonNumber of
+    0: begin
+      WinnerMessage:='Игра окончена! Никто не победил - ничья.';
+      ShowMessage(WinnerMessage);
+      ClearField;
+      UserMove:=True;
+      exit;
+    end;
+
+    11: begin
+      WinnerSymbol:=SpeedButton11.Caption;
+    end;
+
+    22: begin
+      WinnerSymbol:=SpeedButton22.Caption;
+    end;
+
+    33: begin
+      WinnerSymbol:=SpeedButton33.Caption;
+    end;
+  end;
+  WinnerMessage:='Игра окончена! Победил игрок ' + WinnerSymbol;
+  ShowMessage(WinnerMessage);
+  ClearField;
+  UserMove:=True;
+  MoveNumber:=0;
+end;
+
+procedure TMainForm.ClearField;
+begin
+  SpeedButton11.Caption:=''; SpeedButton11.Enabled:=True;
+  SpeedButton12.Caption:=''; SpeedButton12.Enabled:=True;
+  SpeedButton13.Caption:=''; SpeedButton13.Enabled:=True;
+  SpeedButton21.Caption:=''; SpeedButton21.Enabled:=True;
+  SpeedButton22.Caption:=''; SpeedButton22.Enabled:=True;
+  SpeedButton23.Caption:=''; SpeedButton23.Enabled:=True;
+  SpeedButton31.Caption:=''; SpeedButton31.Enabled:=True;
+  SpeedButton32.Caption:=''; SpeedButton32.Enabled:=True;
+  SpeedButton33.Caption:=''; SpeedButton33.Enabled:=True;
 end;
 
 {$Region 'SpeedButtonClick: Обработка нажатий кнопок'}
@@ -176,6 +276,7 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   UserMove:=True;
+  MoveNumber:=0;
 end;
 
 {$EndRegion}
