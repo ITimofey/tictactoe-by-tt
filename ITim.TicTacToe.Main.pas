@@ -118,8 +118,51 @@ end;
 
 procedure TMainForm.CheckResults;
 begin
-  // Реализовать проверку результатов игры
-  exit;
+  {$Region 'if-else: Проверки для горизонтальных линий'}
+  // Горизонталь 1
+  if SpeedButton11.Enabled = False and SpeedButton12.Enabled = False and SpeedButton13.Enabled = False then
+    if (SpeedButton11.Caption = SpeedButton12.Caption) and (SpeedButton12.Caption = SpeedButton13.Caption) then
+      ShowMessage('Игра окончена!');
+
+  // Горизонталь 2
+  if SpeedButton21.Enabled = False and SpeedButton22.Enabled = False and SpeedButton23.Enabled = False then
+    if (SpeedButton21.Caption = SpeedButton22.Caption) and (SpeedButton22.Caption = SpeedButton23.Caption) then
+      ShowMessage('Игра окончена!');
+
+  // Горизонталь 3
+  if SpeedButton31.Enabled = False and SpeedButton32.Enabled = False and SpeedButton33.Enabled = False then
+    if (SpeedButton31.Caption = SpeedButton32.Caption) and (SpeedButton32.Caption = SpeedButton33.Caption) then
+      ShowMessage('Игра окончена!');
+  {$EndRegion}
+
+  {$Region 'if-else: Проверки для вертикальных линий'}
+  // Вертикаль 1
+  if SpeedButton11.Enabled = False and SpeedButton21.Enabled = False and SpeedButton31.Enabled = False then
+    if (SpeedButton11.Caption = SpeedButton21.Caption) and (SpeedButton21.Caption = SpeedButton31.Caption) then
+      ShowMessage('Игра окончена!');
+
+  // Вертикаль 2
+  if SpeedButton12.Enabled = False and SpeedButton22.Enabled = False and SpeedButton32.Enabled = False then
+    if (SpeedButton12.Caption = SpeedButton22.Caption) and (SpeedButton22.Caption = SpeedButton32.Caption) then
+      ShowMessage('Игра окончена!');
+
+  // Вертикаль 3
+  if SpeedButton13.Enabled = False and SpeedButton23.Enabled = False and SpeedButton33.Enabled = False then
+    if (SpeedButton13.Caption = SpeedButton23.Caption) and (SpeedButton23.Caption = SpeedButton33.Caption) then
+      ShowMessage('Игра окончена!');
+  {$EndRegion}
+
+  {$Region 'if-else: Проверки для диагональных линий'}
+  // Диагональ 1
+  if SpeedButton11.Enabled = False and SpeedButton22.Enabled = False and SpeedButton33.Enabled = False then
+    if (SpeedButton11.Caption = SpeedButton22.Caption) and (SpeedButton22.Caption = SpeedButton33.Caption) then
+      ShowMessage('Игра окончена!');
+
+  // Диагональ 2
+  if SpeedButton13.Enabled = False and SpeedButton22.Enabled = False and SpeedButton31.Enabled = False then
+    if (SpeedButton13.Caption = SpeedButton22.Caption) and (SpeedButton22.Caption = SpeedButton31.Caption) then
+      ShowMessage('Игра окончена!');
+  {$EndRegion}
 end;
 
 {$Region 'SpeedButtonClick: Обработка нажатий кнопок'}
