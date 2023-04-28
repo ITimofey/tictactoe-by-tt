@@ -50,6 +50,7 @@ var
   MainForm: TMainForm;
   UserMove: Boolean;
   MoveSymbol: Char;
+  MoveNumber: Integer;
 
 implementation
 
@@ -120,6 +121,8 @@ end;
 
 procedure TMainForm.CheckResults;
 begin
+  Inc(MoveNumber);
+
   {$Region 'if-else: Проверки для горизонтальных линий'}
   // Горизонталь 1
   if SpeedButton11.Enabled = False and SpeedButton12.Enabled = False and SpeedButton13.Enabled = False then
@@ -165,6 +168,12 @@ begin
     if (SpeedButton13.Caption = SpeedButton22.Caption) and (SpeedButton22.Caption = SpeedButton31.Caption) then
       FinishRound(22);
   {$EndRegion}
+
+  {$Region 'if-else: Проверка на ничью'}
+  if MoveNumber = 9 then
+    FinishRound(0);
+  {$EndRegion}
+
 end;
 
 procedure TMainForm.FinishRound(ButtonNumber: Integer);
@@ -173,6 +182,14 @@ begin
     WinnerSymbol, WinnerMessage: String;
 
   case ButtonNumber of
+    0: begin
+      WinnerMessage:='Игра окончена! Никто не победил - ничья.';
+      ShowMessage(WinnerMessage);
+      ClearField;
+      UserMove:=True;
+      exit;
+    end;
+
     11: begin
       WinnerSymbol:=SpeedButton11.Caption;
     end;
@@ -188,6 +205,8 @@ begin
   WinnerMessage:='Игра окончена! Победил игрок ' + WinnerSymbol;
   ShowMessage(WinnerMessage);
   ClearField;
+  UserMove:=True;
+  MoveNumber:=0;
 end;
 
 procedure TMainForm.ClearField;
@@ -257,6 +276,7 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   UserMove:=True;
+  MoveNumber:=0;
 end;
 
 {$EndRegion}
