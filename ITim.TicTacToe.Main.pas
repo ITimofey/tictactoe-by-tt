@@ -29,6 +29,7 @@ type
     procedure MakeMove(ButtonNumber: Integer);
     procedure CheckResults;
     procedure FinishRound(ButtonNumber: Integer);
+    procedure ClearField;
     procedure SpeedButton11Click(Sender: TObject);
     procedure SpeedButton12Click(Sender: TObject);
     procedure SpeedButton13Click(Sender: TObject);
@@ -186,6 +187,20 @@ begin
   end;
   WinnerMessage:='Игра окончена! Победил игрок ' + WinnerSymbol;
   ShowMessage(WinnerMessage);
+  ClearField;
+end;
+
+procedure TMainForm.ClearField;
+begin
+  SpeedButton11.Caption:=''; SpeedButton11.Enabled:=True;
+  SpeedButton12.Caption:=''; SpeedButton12.Enabled:=True;
+  SpeedButton13.Caption:=''; SpeedButton13.Enabled:=True;
+  SpeedButton21.Caption:=''; SpeedButton21.Enabled:=True;
+  SpeedButton22.Caption:=''; SpeedButton22.Enabled:=True;
+  SpeedButton23.Caption:=''; SpeedButton23.Enabled:=True;
+  SpeedButton31.Caption:=''; SpeedButton31.Enabled:=True;
+  SpeedButton32.Caption:=''; SpeedButton32.Enabled:=True;
+  SpeedButton33.Caption:=''; SpeedButton33.Enabled:=True;
 end;
 
 {$Region 'SpeedButtonClick: Обработка нажатий кнопок'}
