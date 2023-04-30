@@ -1,4 +1,4 @@
-unit ITim.TicTacToe.Main;
+unit ITim.TicTacToe.Game;
 
 interface
 
@@ -114,9 +114,7 @@ begin
       SpeedButton33.Enabled:=False;
     end;
   end;
-
   CheckResults;
-
 end;
 
 procedure TMainForm.CheckResults;
@@ -173,7 +171,6 @@ begin
   if MoveNumber = 9 then
     FinishRound(0);
   {$EndRegion}
-
 end;
 
 procedure TMainForm.FinishRound(ButtonNumber: Integer);

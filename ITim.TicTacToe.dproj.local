@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2023.04.28 15:59:28.231,=C:\Users\timof\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2023.04.28 16:01:26.453,C:\Users\timof\Documents\Embarcadero\Studio\Projects\ITim.TicTacToe\ITim.TicTacToe.Main.pas=C:\Users\timof\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2023.04.28 16:01:26.453,C:\Users\timof\Documents\Embarcadero\Studio\Projects\ITim.TicTacToe\ITim.TicTacToe.Main.dfm=C:\Users\timof\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>2023.04.28 16:01:36.657,C:\Users\timof\Documents\Embarcadero\Studio\Projects\ITim.TicTacToe\ITim.TicTacToe.dproj=C:\Users\timof\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.231,=C:\Users\timof\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.453,C:\Users\timof\Documents\Embarcadero\Studio\Projects\ITim.TicTacToe\ITim.TicTacToe.Main.pas=C:\Users\timof\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.453,C:\Users\timof\Documents\Embarcadero\Studio\Projects\ITim.TicTacToe\ITim.TicTacToe.Main.dfm=C:\Users\timof\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.657,C:\Users\timof\Documents\Embarcadero\Studio\Projects\ITim.TicTacToe\ITim.TicTacToe.dproj=C:\Users\timof\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
   </Transactions>
 </BorlandProject>
