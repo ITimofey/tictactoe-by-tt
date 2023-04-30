@@ -41,6 +41,8 @@ implementation
 
 procedure TMainMenuForm.ButtonStartClick(Sender: TObject);
 begin
+  if (not Assigned(GameForm)) then
+    GameForm:=TGameForm.Create(GameForm);
   GameForm.Show;
 end;
 
