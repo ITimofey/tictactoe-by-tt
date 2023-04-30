@@ -11,10 +11,20 @@ uses
   Vcl.Graphics,
   Vcl.Controls,
   Vcl.Forms,
-  Vcl.Dialogs;
+  Vcl.Dialogs,
+  Vcl.Buttons,
+  Vcl.StdCtrls,
+  ITim.TicTacToe.Game;
 
 type
-  TForm1 = class(TForm)
+  TMainMenuForm = class(TForm)
+    ButtonStart: TSpeedButton;
+    ButtonExit: TSpeedButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    procedure ButtonExitClick(Sender: TObject);
+    procedure ButtonStartClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -22,10 +32,21 @@ type
   end;
 
 var
-  Form1: TForm1;
+  MainMenuForm: TMainMenuForm;
+  GameForm: TGameForm;
 
 implementation
 
 {$R *.dfm}
+
+procedure TMainMenuForm.ButtonStartClick(Sender: TObject);
+begin
+  GameForm.Show;
+end;
+
+procedure TMainMenuForm.ButtonExitClick(Sender: TObject);
+begin
+  MainMenuForm.Close;
+end;
 
 end.

@@ -1,4 +1,4 @@
-object MainForm: TMainForm
+object GameForm: TGameForm
   Left = 0
   Top = 0
   BorderStyle = bsSingle

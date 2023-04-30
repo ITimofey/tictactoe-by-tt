@@ -12,10 +12,11 @@ uses
   Vcl.Controls,
   Vcl.Forms,
   Vcl.Dialogs,
-  Vcl.StdCtrls, Vcl.Buttons;
+  Vcl.StdCtrls,
+  Vcl.Buttons;
 
 type
-  TMainForm = class(TForm)
+  TGameForm = class(TForm)
   // Ячейки для расположения крестиков и ноликов
     SpeedButton11: TSpeedButton;
     SpeedButton12: TSpeedButton;
@@ -47,16 +48,22 @@ type
   end;
 
 var
-  MainForm: TMainForm;
+  GameForm: TGameForm;
   UserMove: Boolean;
   MoveSymbol: Char;
   MoveNumber: Integer;
 
 implementation
 
+uses
+  ITim.TicTacToe.MainMenu;
+
+var
+  MainMenuForm: TMainMenuForm;
+
 {$R *.dfm}
 
-procedure TMainForm.MakeMove(ButtonNumber: Integer);
+procedure TGameForm.MakeMove(ButtonNumber: Integer);
 begin
   if UserMove=True then
   begin
@@ -117,7 +124,7 @@ begin
   CheckResults;
 end;
 
-procedure TMainForm.CheckResults;
+procedure TGameForm.CheckResults;
 begin
   Inc(MoveNumber);
 
@@ -173,7 +180,7 @@ begin
   {$EndRegion}
 end;
 
-procedure TMainForm.FinishRound(ButtonNumber: Integer);
+procedure TGameForm.FinishRound(ButtonNumber: Integer);
 begin
   var
     WinnerSymbol, WinnerMessage: String;
@@ -206,7 +213,7 @@ begin
   MoveNumber:=0;
 end;
 
-procedure TMainForm.ClearField;
+procedure TGameForm.ClearField;
 begin
   SpeedButton11.Caption:=''; SpeedButton11.Enabled:=True;
   SpeedButton12.Caption:=''; SpeedButton12.Enabled:=True;
@@ -221,47 +228,47 @@ end;
 
 {$Region 'SpeedButtonClick: Обработка нажатий кнопок'}
 
-procedure TMainForm.SpeedButton11Click(Sender: TObject);
+procedure TGameForm.SpeedButton11Click(Sender: TObject);
 begin
   MakeMove(11);
 end;
 
-procedure TMainForm.SpeedButton12Click(Sender: TObject);
+procedure TGameForm.SpeedButton12Click(Sender: TObject);
 begin
   MakeMove(12);
 end;
 
-procedure TMainForm.SpeedButton13Click(Sender: TObject);
+procedure TGameForm.SpeedButton13Click(Sender: TObject);
 begin
   MakeMove(13);
 end;
 
-procedure TMainForm.SpeedButton21Click(Sender: TObject);
+procedure TGameForm.SpeedButton21Click(Sender: TObject);
 begin
   MakeMove(21);
 end;
 
-procedure TMainForm.SpeedButton22Click(Sender: TObject);
+procedure TGameForm.SpeedButton22Click(Sender: TObject);
 begin
   MakeMove(22);
 end;
 
-procedure TMainForm.SpeedButton23Click(Sender: TObject);
+procedure TGameForm.SpeedButton23Click(Sender: TObject);
 begin
   MakeMove(23);
 end;
 
-procedure TMainForm.SpeedButton31Click(Sender: TObject);
+procedure TGameForm.SpeedButton31Click(Sender: TObject);
 begin
   MakeMove(31);
 end;
 
-procedure TMainForm.SpeedButton32Click(Sender: TObject);
+procedure TGameForm.SpeedButton32Click(Sender: TObject);
 begin
   MakeMove(32);
 end;
 
-procedure TMainForm.SpeedButton33Click(Sender: TObject);
+procedure TGameForm.SpeedButton33Click(Sender: TObject);
 begin
   MakeMove(33);
 end;
@@ -270,7 +277,7 @@ end;
 
 {$Region 'FormCreate: Инициализация переменных при создании формы'}
 
-procedure TMainForm.FormCreate(Sender: TObject);
+procedure TGameForm.FormCreate(Sender: TObject);
 begin
   UserMove:=True;
   MoveNumber:=0;
